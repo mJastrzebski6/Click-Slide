@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click&Slide</title>
+    <script src="Javascript/Objects.js" type="module"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="overlay">
+        <p id="info"></p>
+        <button id="play-again-button">Kliknij żeby zagrac ponownie</button>
+        <br><br>
+        <input type="text" id="nick-input" pattern="[A-Za-z0-9_]{1,10}">
+        <button type="submit" id="nick-input-button">OK</button>
+        <div id="records">
+            <p>TOP10</p>
+            <div id="nicks"></div>
+            <div id="times"></div>
+        </div>
+    </div>
+    <div id="container">
+        <div id="slider">
+            <img src="Images/arrowLeft.png" id="leftArrow">
+            <div id="photo">
+                <div id="photos">
+                    <img src="Images/Pictures/1.png">
+                    <img src="Images/Pictures/2.png">
+                    <img src="Images/Pictures/3.png">
+                    <img src="Images/Pictures/1.png">
+                </div>
+            </div>
+            <img src="Images/arrowRight.png" id="rightArrow">
+        </div>
+       <div id="buttonsRow">
+            <div id="buttons">
+                <button id="buttonSize3">3 x 3</button>
+                <button id="buttonSize4">4 x 4</button>
+                <button id="buttonSize5">5 x 5</button>
+                <button id="buttonSize6">6 x 6</button>
+            </div>
+        </div>
+        <div id="timerRow">
+            <div id="timer"></div>
+        </div>
+        <div id="playboard"></div>
+    </div>
+</body>
+</html>
