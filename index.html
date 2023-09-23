@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,14 @@
     <script src="Javascript/Objects.js" type="module"></script>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div id="overlay">
         <p id="info"></p>
         <button id="play-again-button">Kliknij żeby zagrac ponownie</button>
         <br><br>
-        <input type="text" id="nick-input" pattern="[A-Za-z0-9_]{1,10}">
+        <input type="text" id="nick-input" pattern="[A-Za-z0-9_]{1,10}" placeholder="Nick">
         <button type="submit" id="nick-input-button">OK</button>
         <div id="records">
             <p>TOP10</p>
@@ -34,7 +36,7 @@
             </div>
             <img src="Images/arrowRight.png" id="rightArrow">
         </div>
-       <div id="buttonsRow">
+        <div id="buttonsRow">
             <div id="buttons">
                 <button id="buttonSize3">3 x 3</button>
                 <button id="buttonSize4">4 x 4</button>
@@ -48,4 +50,5 @@
         <div id="playboard"></div>
     </div>
 </body>
+
 </html>

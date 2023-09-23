@@ -1,55 +1,89 @@
-body{
+body {
     background-color: black;
     margin: 0;
     padding: 0;
 }
-#container{
-    width: 100vw;
-    margin: 0 auto;
-    margin-top: 20px;   
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-#slider, #photos{
+
+#slider,
+#photos {
     height: 120px;
     width: 360px;
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
 }
-#timerRow, #buttonsRow{
+
+#timerRow,
+#buttonsRow {
     width: 100%;
     height: 31px;
 }
-#slider{
+
+#slider {
     margin-bottom: 10px;
 }
-#photos{
+
+#photos {
     width: 480px;
 }
-img{
+
+img {
     height: 120px;
     width: 120px;
 }
+
 #photo {
     height: 120px;
     width: 120px;
     overflow: hidden;
 }
-#right, #left, #photo{
-    -webkit-user-select: none;  /* Chrome all / Safari all */
-    -moz-user-select: none;     /* Firefox all */
-    -ms-user-select: none;      /* IE 10+ */
+
+#right,
+#left,
+#photo {
+    -webkit-user-select: none;
+    /* Chrome all / Safari all */
+    -moz-user-select: none;
+    /* Firefox all */
+    -ms-user-select: none;
+    /* IE 10+ */
     user-select: none;
 }
 
-#buttons{
-    margin: 0 auto;
-    width: 166px;
-}
-button{
-    border: none;
+#buttonsRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0px;
 }
 
-#playboard{
+#buttons {
+    /* margin: 0 auto;
+    width: 166px; */
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+
+
+}
+
+button {
+    border: none;
+    background-color: dodgerblue;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+
+}
+
+#playboard {
     width: 1020px;
     height: 1020px;
     display: flex;
@@ -57,59 +91,70 @@ button{
     border: 2px solid gray;
     margin: 0 auto;
 }
-#playboard > div{
+
+#playboard>div {
     background-repeat: no-repeat;
     background-image: url("2.png");
     position: relative;
 }
+
 #overlay {
-  position: fixed;
-  display: none;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.7);
-  z-index: 2;
-  color: white;
-  text-align: center;
-  font-size: 28px;
-  
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+    color: white;
+    text-align: center;
+    font-size: 28px;
+
 }
-#overlay > button{
+
+#overlay>button {
     font-size: 20px;
     padding: 5px 10px;
     margin: auto;
 }
-input{
+
+input {
     margin: auto;
 }
-#overlay > p{
+
+#overlay>p {
     padding: 20vh 0 0 0;
 }
-#records{
+
+#records {
     width: 400px;
     height: 700px;
     margin: auto;
     display: none;
 }
-#records > p{
+
+#records>p {
     margin: auto;
 }
-#nicks, #times{
+
+#nicks,
+#times {
     width: 200px;
     text-align: left;
     float: left;
     height: 350px;
 }
 
-#nickInput, #nickInput2{
+#nickInput,
+#nickInput2 {
     display: none;
     margin: auto;
 }
-#timer{
+
+#timer {
     height: 21px;
     width: 192px;
     padding: 5px 0px;
@@ -118,7 +163,8 @@ input{
     display: flex;
     flex-wrap: wrap;
 }
-#timer > img{
+
+#timer>img {
     width: 16px;
     height: 21px;
     margin: 0;
