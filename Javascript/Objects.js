@@ -1,5 +1,5 @@
 import Cookies from "./Cookies.js";
-import Game from "./game.js";
+import Game from "./Game.js";
 import Overlay from "./Overlay.js";
 import Playboard from "./Playboard.js";
 import Slider from "./Slider.js";
