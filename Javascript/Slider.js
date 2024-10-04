@@ -1,59 +1,36 @@
- import Objects from "./Objects.js";
+import Objects from "./Objects.js";
  
  class Slider {
     
     constructor(){
-        this.picture = document.getElementById("photo");
-        this.leftArrow = document.getElementById("leftArrow");
-        this.rightArrow = document.getElementById("rightArrow");
-        this.currentImageIndex = 1;
+        this.sliderImage = document.getElementById("slider-image");
+        this.leftArrow = document.getElementById("prev-slide");
+        this.rightArrow = document.getElementById("next-slide");
+        this.currentImageIndex = 0;
+        this.images = ['./Images/Pictures/1.png', './Images/Pictures/2.png', './Images/Pictures/3.png'];
+        this.image = new Image();
+        this.loadImage()
+        this.leftArrow.addEventListener('click', () => {
+            Objects.timer.stop(false)
+            Objects.timer.clear()
+            this.currentImageIndex = (this.currentImageIndex === 0) ? this.images.length - 1 : this.currentImageIndex - 1;
+            this.loadImage();
+        });
         
-        this.leftArrow.addEventListener("click", () => this.slideLeft());
-        this.rightArrow.addEventListener("click", () => this.slideRight());
-        this.picture.scrollLeft = 0;
+        this.rightArrow.addEventListener('click', () => {
+            Objects.timer.stop(false)
+            Objects.timer.clear()
+            this.currentImageIndex = (this.currentImageIndex === this.images.length - 1) ? 0 : this.currentImageIndex + 1;
+            this.loadImage();
+        });
     }
-
-    slideRight(){
-        this.leftArrow.style.pointerEvents = 'none';
-        this.rightArrow.style.pointerEvents = 'none';
-
-        if(this.currentImageIndex == 4){
-            this.currentImageIndex = 1;
-            this.picture.scrollLeft = 0;
-        } 
-        this.currentImageIndex++;
-
-        let end = this.picture.scrollLeft + 120;
-
-        let toRightInterval = setInterval(() => {
-            this.picture.scrollLeft += 10;
-            if(this.picture.scrollLeft == end){
-                clearInterval(toRightInterval);
-                this.leftArrow.style.pointerEvents = 'auto'; 
-                this.rightArrow.style.pointerEvents = 'auto'; 
-            } 
-        }, 1);    
-    }
-
-    slideLeft(){
-        this.leftArrow.style.pointerEvents = 'none';
-        this.rightArrow.style.pointerEvents = 'none';
-
-        if(this.currentImageIndex == 1){
-            this.currentImageIndex = 4;
-            this.picture.scrollLeft = 360;
-        } 
-        this.currentImageIndex--;
-
-        let end = this.picture.scrollLeft - 120;
-        let toLeftInterval = setInterval(() => {
-            this.picture.scrollLeft -= 10;
-            if(this.picture.scrollLeft == end){
-                clearInterval(toLeftInterval);
-                this.leftArrow.style.pointerEvents = 'auto'; 
-                this.rightArrow.style.pointerEvents = 'auto'; 
-            } 
-        }, 1);
+    
+    loadImage() {
+        this.sliderImage.src = this.images[this.currentImageIndex];
+        this.image.src = this.images[this.currentImageIndex];
+        this.image.onload = () => {
+            Objects.playboard.drawBigImage();
+        };
     }
 }
 export default Slider;

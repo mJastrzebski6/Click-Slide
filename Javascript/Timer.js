@@ -82,9 +82,11 @@ class Timer {
         }, 1);
     }
     
-    stop(){
+    stop(withRecord){
         clearInterval(this.timerInterval);
         this.timerInterval = null;
+        if(!withRecord) return
+
         let info = document.getElementById("info");
         let ts = "";
         for(let i=0; i<12; i++){
@@ -92,9 +94,10 @@ class Timer {
             else if(i == 5) ts += " minut ";
             else ts += this.timeString[i];
         }
-        ts += "s";
+        ts += " sekund";
         info.innerHTML = `Ułożyłeś w czasie ${ts}.`;
         Objects.cookies.checkForPlace(this.timeString);
+        document.getElementById("topParagraph").innerText="TOP10 - " + Objects.playboard.size + "x" + Objects.playboard.size
     }
 
     clear(){

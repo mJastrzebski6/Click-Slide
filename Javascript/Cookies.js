@@ -8,19 +8,33 @@ class Cookies{
     constructor(){
         this.getCookie();
     }
-    getCookie(){
-        if(document.cookie == "") this.setCookie();
-            
-        const value = `; ${document.cookie}`;
-        const parts = value.split("; scoreboard=");
-        this.scoreboardArray = JSON.parse(parts[1]);
+
+    getCookie() {
+        const cookieName = "scoreboard=";
+        const cookieValue = document.cookie
+          .split("; ")
+          .find(row => row.startsWith(cookieName))
+          ?.split("=")[1];
+    
+        if (cookieValue) {
+          try {
+            this.scoreboardArray = JSON.parse(decodeURIComponent(cookieValue));
+          } catch (error) {
+            console.error("Błąd przy parsowaniu ciasteczka: ", error);
+            this.scoreboardArray = { 3: [], 4: [], 5: [], 6: [] }; 
+          }
+        } else {
+          this.setCookie();
+        }
+      }
+    
+    setCookie() {
+        const cookieName = "scoreboard=";
+        const cookieValue = encodeURIComponent(JSON.stringify(this.scoreboardArray));
+        const expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString(); // 365 dni ważności
+        document.cookie = `${cookieName}${cookieValue}; expires=${expires}; path=/; SameSite=Strict`;
     }
-    setCookie(){
-        const d = new Date();
-        d.setTime(d.getTime() + (365*24*60*60*1000));
-        let expires = "expires="+ d.toUTCString();
-        document.cookie ="scoreboard=" + JSON.stringify(this.scoreboardArray) + ";" + expires + ";SameSite=Strict";
-    }
+
     checkForPlace(time){
         this.time = time;
         let isPlace = false;
@@ -35,6 +49,7 @@ class Cookies{
             Objects.overlay.recordsOn();
         }
     }
+
     updateScoreboard(nick){
         if(nick=="") nick="anonymous";
         let score = {
@@ -53,12 +68,14 @@ class Cookies{
         });
         this.setCookie();
     }
+
     getNick(){
         let nick = document.getElementById('nick-input').value;
         Objects.overlay.inputOff();
         this.updateScoreboard(nick);
         this.displayRecords();
     }
+    
     displayRecords(){
         let nicks = "";
         let times = "";
